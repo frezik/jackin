@@ -1,5 +1,7 @@
 import * as Express from 'express';
 
+export {Device} from './src/device';
+
 
 const PORT = 8000;
 const APP = Express();
