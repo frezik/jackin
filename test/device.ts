@@ -12,3 +12,6 @@ Tap.ok( gpio_pin.subsystems.gpio, "It's a GPIO pin" );
 
 const adc_pin = device.getPin( 5 );
 Tap.ok( adc_pin.subsystems.adc, "It's an ADC pin" );
+
+const pwm_pin = device.getPin( 6 );
+Tap.ok( pwm_pin.subsystems.pwm, "It's a PWM pin" );

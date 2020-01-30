@@ -6,6 +6,7 @@ export * from './src/subsystem';
 export * from './src/subsystem/adc';
 export * from './src/subsystem/gpio';
 export * from './src/subsystem/power';
+export * from './src/subsystem/pwm';
 
 
 const PORT = 8000;

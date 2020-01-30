@@ -102,6 +102,45 @@ export class MockADC
     }
 }
 
+export class MockPWM
+    implements Jackin.PWM
+{
+    private pin: Jackin.Pin;
+    private value: number = 0;
+    private min_value: number = 0;
+    private max_value: number = 255;
+
+
+    constructor( pin: Jackin.Pin )
+    {
+        this.pin = pin;
+    }
+
+
+    getPins(): Jackin.Pin[]
+    {
+        return [ this.pin ];
+    }
+
+    getMinValue(): number
+    {
+        return this.min_value;
+    }
+
+    getMaxValue(): number
+    {
+        return this.max_value;
+    }
+
+    setValue( value: number ): Promise<void>
+    {
+        this.value = value;
+        return new Promise( (resolve, reject) => {
+            resolve();
+        });
+    }
+}
+
 
 export class Device
     implements Jackin.Device
@@ -162,19 +201,30 @@ export class Device
         };
         adc.subsystems.adc = new MockADC( adc );
 
+        let pwm = {
+            type: Jackin.PinType.PWM
+            ,number: 4
+            ,note: "" 
+            ,subsystems: {
+                pwm: null
+            }
+        };
+        pwm.subsystems.pwm = new MockPWM( pwm );
+
         this.pins_by_num = [
             power5v_pin
             ,gnd_pin
             ,gpio1
             ,gpio2
             ,adc
+            ,pwm
         ];
 
         this.pins = {
             pins: [
                 [ this.pins_by_num[0] ,this.pins_by_num[1] ]
                 ,[ this.pins_by_num[2] ,this.pins_by_num[3] ]
-                ,[ this.pins_by_num[4] ,null ]
+                ,[ this.pins_by_num[4] ,this.pins_by_num[5] ]
             ]
         };
     }
