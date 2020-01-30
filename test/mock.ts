@@ -64,6 +64,44 @@ export class MockGPIO
     }
 }
 
+export class MockADC
+    implements Jackin.ADC
+{
+    private pin: Jackin.Pin;
+    private value: number = 0;
+    private min_value: number = 0;
+    private max_value: number = 255;
+
+
+    constructor( pin: Jackin.Pin )
+    {
+        this.pin = pin;
+    }
+
+
+    getPins(): Jackin.Pin[]
+    {
+        return [ this.pin ];
+    }
+
+    getMinValue(): number
+    {
+        return this.min_value;
+    }
+
+    getMaxValue(): number
+    {
+        return this.max_value;
+    }
+
+    getValue(): Promise<number>
+    {
+        return new Promise( (resolve, reject) => {
+            resolve( this.value );
+        });
+    }
+}
+
 
 export class Device
     implements Jackin.Device
@@ -114,17 +152,29 @@ export class Device
         };
         gpio2.subsystems.gpio = new MockGPIO( gpio2 );
 
+        let adc = {
+            type: Jackin.PinType.ADC
+            ,number: 4
+            ,note: "" 
+            ,subsystems: {
+                adc: null
+            }
+        };
+        adc.subsystems.adc = new MockADC( adc );
+
         this.pins_by_num = [
             power5v_pin
             ,gnd_pin
             ,gpio1
             ,gpio2
+            ,adc
         ];
 
         this.pins = {
             pins: [
                 [ this.pins_by_num[0] ,this.pins_by_num[1] ]
                 ,[ this.pins_by_num[2] ,this.pins_by_num[3] ]
+                ,[ this.pins_by_num[4] ,null ]
             ]
         };
     }

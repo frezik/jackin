@@ -1,4 +1,5 @@
 import * as Subsystem from './subsystem';
+import { ADC } from './subsystem/adc';
 import { GPIO } from './subsystem/gpio';
 import { Power } from './subsystem/power';
 
@@ -12,12 +13,15 @@ export enum PinType
     ,GPIO
     ,I2C
     ,SPI
+    ,ADC
+    ,DAC
 }
 
 export interface Subsystems
 {
     gpio?: GPIO
     power?: Power
+    adc?: ADC
 }
 
 export interface Pin
