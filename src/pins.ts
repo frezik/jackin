@@ -4,6 +4,7 @@ import { GPIO } from './subsystem/gpio';
 import { I2C } from './subsystem/i2c';
 import { Power } from './subsystem/power';
 import { PWM } from './subsystem/pwm';
+import { SPI } from './subsystem/spi';
 
 
 export enum PinType
@@ -26,6 +27,7 @@ export interface Subsystems
     adc?: ADC
     pwm?: PWM
     i2c?: I2C
+    spi?: SPI
 }
 
 export interface Pin

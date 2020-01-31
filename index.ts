@@ -8,6 +8,7 @@ export * from './src/subsystem/gpio';
 export * from './src/subsystem/i2c';
 export * from './src/subsystem/power';
 export * from './src/subsystem/pwm';
+export * from './src/subsystem/spi';
 
 
 const PORT = 8000;

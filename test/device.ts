@@ -18,3 +18,6 @@ Tap.ok( pwm_pin.subsystems.pwm, "It's a PWM pin" );
 
 const i2c_pin = device.getPin( 7 );
 Tap.ok( i2c_pin.subsystems.i2c, "It's an I2C pin" );
+
+const spi_pin = device.getPin( 8 );
+Tap.ok( spi_pin.subsystems.spi, "It's an SPI pin" );

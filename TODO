@@ -1,0 +1,12 @@
+Version 0.1
+===========
+* Assign SPI/I2C/etc. devices across multiple pins
+* Different subsystems assigned to same pin
+* Serial
+* REST API
+* Frontend
+
+Version 0.2
+===========
+* Still Camera
+* Video Camera
