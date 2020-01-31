@@ -141,6 +141,50 @@ export class MockPWM
     }
 }
 
+export class MockI2C
+    implements Jackin.I2C
+{
+    private pin: Jackin.Pin;
+    private addr: number;
+
+
+    constructor(
+        pin: Jackin.Pin
+        ,addr: number
+    )
+    {
+        this.pin = pin;
+        this.addr = addr;
+    }
+
+
+    getPins(): Jackin.Pin[]
+    {
+        return [ this.pin ];
+    }
+
+    read(
+        register: number
+        ,length: number
+    ): Promise< [number] >
+    {
+        let data: [number];
+        return new Promise( (resolve, reject) => {
+            resolve( data );
+        });
+    }
+
+    write(
+        register: number
+        ,data: [number]
+    ): Promise<void>
+    {
+        return new Promise( (resolve, reject) => {
+            resolve();
+        });
+    }
+}
+
 
 export class Device
     implements Jackin.Device
@@ -211,6 +255,16 @@ export class Device
         };
         pwm.subsystems.pwm = new MockPWM( pwm );
 
+        let i2c = {
+            type: Jackin.PinType.I2C
+            ,number: 5
+            ,note: "" 
+            ,subsystems: {
+                i2c: null
+            }
+        };
+        i2c.subsystems.i2c = new MockI2C( i2c, 0 );
+
         this.pins_by_num = [
             power5v_pin
             ,gnd_pin
@@ -218,6 +272,7 @@ export class Device
             ,gpio2
             ,adc
             ,pwm
+            ,i2c
         ];
 
         this.pins = {
@@ -225,6 +280,7 @@ export class Device
                 [ this.pins_by_num[0] ,this.pins_by_num[1] ]
                 ,[ this.pins_by_num[2] ,this.pins_by_num[3] ]
                 ,[ this.pins_by_num[4] ,this.pins_by_num[5] ]
+                ,[ this.pins_by_num[6] ,null ]
             ]
         };
     }
