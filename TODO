@@ -1,7 +1,6 @@
 Version 0.1
 ===========
 * Assign SPI/I2C/etc. devices across multiple pins
-* Different subsystems assigned to same pin
 * "Related pins" in Pin interface to show pins connected to same
   bus (SPI/I2C/etc.)
 * Serial
@@ -12,3 +11,4 @@ Version 0.2
 ===========
 * Still Camera
 * Video Camera
+* GPIO event-based interface

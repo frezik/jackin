@@ -238,84 +238,60 @@ export class Device
     constructor()
     {
         let power5v_pin = {
-            type: Jackin.PinType.V50
-            ,number: 1
-            ,note: ""
-            ,subsystems: {
-                power: null
-            }
+            note: ""
+            ,power: null
         };
-        power5v_pin.subsystems.power = new Jackin.Power( 5.0 );
+        power5v_pin.power = new Jackin.Power( 5.0 );
 
         let gnd_pin = {
-            type: Jackin.PinType.GND
-            ,number: 2
-            ,note: ""
-            ,subsystems: {
-                power: null
-            }
+            note: ""
+            ,power: null
         };
-        gnd_pin.subsystems.power = new Jackin.Power( 0 );
+        gnd_pin.power = new Jackin.Power( 0 );
 
         let gpio1 = {
-            type: Jackin.PinType.GPIO
-            ,number: 3
-            ,note: "" 
-            ,subsystems: {
-                gpio: null
-            }
+            note: "" 
+            ,gpio: null
         };
-        gpio1.subsystems.gpio = new MockGPIO( gpio1 );
+        gpio1.gpio = new MockGPIO( gpio1 );
 
         let gpio2 = {
-            type: Jackin.PinType.GPIO
-            ,number: 3
-            ,note: "" 
-            ,subsystems: {
-                gpio: null
-            }
+            note: "" 
+            ,gpio: null
         };
-        gpio2.subsystems.gpio = new MockGPIO( gpio2 );
+        gpio2.gpio = new MockGPIO( gpio2 );
 
         let adc = {
-            type: Jackin.PinType.ADC
-            ,number: 4
-            ,note: "" 
-            ,subsystems: {
-                adc: null
-            }
+            note: "" 
+            ,adc: null
         };
-        adc.subsystems.adc = new MockADC( adc );
+        adc.adc = new MockADC( adc );
 
         let pwm = {
-            type: Jackin.PinType.PWM
-            ,number: 4
-            ,note: "" 
-            ,subsystems: {
-                pwm: null
-            }
+            note: "" 
+            ,pwm: null
         };
-        pwm.subsystems.pwm = new MockPWM( pwm );
+        pwm.pwm = new MockPWM( pwm );
 
         let i2c = {
-            type: Jackin.PinType.I2C
-            ,number: 5
-            ,note: "" 
-            ,subsystems: {
-                i2c: null
-            }
+            note: "" 
+            ,i2c: null
         };
-        i2c.subsystems.i2c = new MockI2C( i2c, 0 );
+        i2c.i2c = new MockI2C( i2c, 0 );
 
         let spi = {
-            type: Jackin.PinType.SPI
-            ,number: 6
-            ,note: "" 
-            ,subsystems: {
-                spi: null
-            }
+            note: "" 
+            ,spi: null
         };
-        spi.subsystems.spi = new MockSPI( spi, 0 );
+        spi.spi = new MockSPI( spi, 0 );
+
+        let multi_pin = {
+            note: "" 
+            ,adc: null
+            ,gpio: null
+        };
+        multi_pin.adc = new MockADC( multi_pin );
+        multi_pin.gpio = new MockGPIO( multi_pin );
 
         this.pins_by_num = [
             power5v_pin
@@ -326,6 +302,7 @@ export class Device
             ,pwm
             ,i2c
             ,spi
+            ,multi_pin
         ];
 
         this.pins = {
@@ -334,6 +311,7 @@ export class Device
                 ,[ this.pins_by_num[2] ,this.pins_by_num[3] ]
                 ,[ this.pins_by_num[4] ,this.pins_by_num[5] ]
                 ,[ this.pins_by_num[6] ,this.pins_by_num[7] ]
+                ,[ this.pins_by_num[7] ,null ]
             ]
         };
     }

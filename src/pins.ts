@@ -20,22 +20,39 @@ export enum PinType
     ,PWM
 }
 
-export interface Subsystems
-{
-    gpio?: GPIO
-    power?: Power
-    adc?: ADC
-    pwm?: PWM
-    i2c?: I2C
-    spi?: SPI
-}
-
 export interface Pin
 {
-    type: PinType
-    ,number: Number
-    ,note: String
-    ,subsystems: Subsystems
+    note: String
+}
+
+export interface GPIOPin
+{
+    note: String
+    gpio: GPIO
+}
+
+export interface PowerPin
+{
+    note: String
+    power: Power
+}
+
+export interface ADCPin
+{
+    note: String
+    adc: ADC
+}
+
+export interface I2CPin
+{
+    note: String
+    i2c: I2C
+}
+
+export interface SPIPin
+{
+    note: String
+    spi: SPI
 }
 
 export interface Pins
