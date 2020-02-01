@@ -19,9 +19,14 @@ Tap.ok( pwm_pin.hasOwnProperty( 'pwm' ), "It's a PWM pin" );
 const i2c_pin = device.getPin( 7 );
 Tap.ok( i2c_pin.hasOwnProperty( 'i2c' ), "It's an I2C pin" );
 
-const spi_pin = device.getPin( 8 );
-Tap.ok( spi_pin.hasOwnProperty( 'spi' ), "It's an SPI pin" );
+const spi_miso_pin = <Jackin.SPIPin> device.getPin( 8 );
+Tap.ok( spi_miso_pin.hasOwnProperty( 'spi' ), "It's an SPI pin" );
 
 const multi_pin = device.getPin( 9 );
 Tap.ok( multi_pin.hasOwnProperty( 'gpio' ), "It's a GPIO pin . . . " );
 Tap.ok( multi_pin.hasOwnProperty( 'adc' ), " . . . and an ADC pin" );
+
+const spi_mosi_pin = <Jackin.SPIPin> device.getPin( 10 );
+Tap.ok( spi_mosi_pin.hasOwnProperty( 'spi' ), "It's an SPI pin" );
+Tap.ok( spi_mosi_pin.spi == spi_miso_pin.spi,
+    "Refers to same SPI object as MISO pin" );

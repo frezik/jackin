@@ -279,11 +279,22 @@ export class Device
         };
         i2c.i2c = new MockI2C( i2c, 0 );
 
-        let spi = {
+        let spi_miso = {
             note: "" 
             ,spi: null
         };
-        spi.spi = new MockSPI( spi, 0 );
+        let spi_mosi = {
+            note: "" 
+            ,spi: null
+        };
+        let spi_clk = {
+            note: "" 
+            ,spi: null
+        };
+        spi_miso.spi = 
+            spi_mosi.spi =
+            spi_clk.spi = 
+            new MockSPI( spi_mosi, 0 );
 
         let multi_pin = {
             note: "" 
@@ -299,10 +310,13 @@ export class Device
             ,gpio1
             ,gpio2
             ,adc
-            ,pwm
+            ,pwm // pin index 5
             ,i2c
-            ,spi
+            ,spi_miso
             ,multi_pin
+            ,spi_mosi
+            ,gnd_pin // pin index 10
+            ,spi_clk
         ];
 
         this.pins = {
@@ -311,7 +325,8 @@ export class Device
                 ,[ this.pins_by_num[2] ,this.pins_by_num[3] ]
                 ,[ this.pins_by_num[4] ,this.pins_by_num[5] ]
                 ,[ this.pins_by_num[6] ,this.pins_by_num[7] ]
-                ,[ this.pins_by_num[7] ,null ]
+                ,[ this.pins_by_num[8] ,this.pins_by_num[9] ]
+                ,[ this.pins_by_num[10] ,this.pins_by_num[11] ]
             ]
         };
     }
