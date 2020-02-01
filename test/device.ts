@@ -16,8 +16,8 @@ Tap.ok( adc_pin.hasOwnProperty( 'adc' ), "It's an ADC pin" );
 const pwm_pin = device.getPin( 6 );
 Tap.ok( pwm_pin.hasOwnProperty( 'pwm' ), "It's a PWM pin" );
 
-const i2c_pin = device.getPin( 7 );
-Tap.ok( i2c_pin.hasOwnProperty( 'i2c' ), "It's an I2C pin" );
+const i2c_sda_pin = device.getPin( 7 );
+Tap.ok( i2c_sda_pin.hasOwnProperty( 'i2c' ), "It's an I2C pin" );
 
 const spi_miso_pin = <Jackin.SPIPin> device.getPin( 8 );
 Tap.ok( spi_miso_pin.hasOwnProperty( 'spi' ), "It's an SPI pin" );
@@ -30,3 +30,11 @@ const spi_mosi_pin = <Jackin.SPIPin> device.getPin( 10 );
 Tap.ok( spi_mosi_pin.hasOwnProperty( 'spi' ), "It's an SPI pin" );
 Tap.ok( spi_mosi_pin.spi == spi_miso_pin.spi,
     "Refers to same SPI object as MISO pin" );
+
+const i2c_sdc_pin = device.getPin( 13 );
+Tap.ok( i2c_sdc_pin.hasOwnProperty( 'i2c' ), "It's an I2C pin" );
+Tap.ok( (<Jackin.I2CPin> i2c_sdc_pin).i2c == (<Jackin.I2CPin> i2c_sda_pin).i2c,
+    "Refers to same I2C object as SDA pin" );
+Tap.ok( (<Jackin.GPIOPin> i2c_sdc_pin).gpio
+    != (<Jackin.GPIOPin> i2c_sda_pin).gpio,
+    "Does NOT refers to same GPIO object as SDA pin" );

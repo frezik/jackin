@@ -276,17 +276,18 @@ export class Device
         let i2c_sda = {
             note: "" 
             ,i2c: null
+            ,gpio: null
         };
         let i2c_sdc = {
             note: "" 
             ,i2c: null
+            ,gpio: null
         };
-        // TODO make sure this technique works with multiple 
-        // systems. The GPIO subsystem for the SDA pin shouldn't 
-        // be the same as the one for the SDC pin.
         i2c_sda.i2c
             = i2c_sdc.i2c
             = new MockI2C( i2c_sda, 0 );
+        i2c_sda.gpio = new MockGPIO( i2c_sda );
+        i2c_sdc.gpio = new MockGPIO( i2c_sdc );
 
         let spi_miso = {
             note: "" 
