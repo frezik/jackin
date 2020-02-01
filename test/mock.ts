@@ -273,11 +273,20 @@ export class Device
         };
         pwm.pwm = new MockPWM( pwm );
 
-        let i2c = {
+        let i2c_sda = {
             note: "" 
             ,i2c: null
         };
-        i2c.i2c = new MockI2C( i2c, 0 );
+        let i2c_sdc = {
+            note: "" 
+            ,i2c: null
+        };
+        // TODO make sure this technique works with multiple 
+        // systems. The GPIO subsystem for the SDA pin shouldn't 
+        // be the same as the one for the SDC pin.
+        i2c_sda.i2c
+            = i2c_sdc.i2c
+            = new MockI2C( i2c_sda, 0 );
 
         let spi_miso = {
             note: "" 
@@ -291,10 +300,10 @@ export class Device
             note: "" 
             ,spi: null
         };
-        spi_miso.spi = 
-            spi_mosi.spi =
-            spi_clk.spi = 
-            new MockSPI( spi_mosi, 0 );
+        spi_miso.spi
+            = spi_mosi.spi
+            = spi_clk.spi 
+            = new MockSPI( spi_mosi, 0 );
 
         let multi_pin = {
             note: "" 
@@ -311,12 +320,13 @@ export class Device
             ,gpio2
             ,adc
             ,pwm // pin index 5
-            ,i2c
+            ,i2c_sda
             ,spi_miso
             ,multi_pin
             ,spi_mosi
             ,gnd_pin // pin index 10
             ,spi_clk
+            ,i2c_sdc
         ];
 
         this.pins = {
@@ -327,6 +337,7 @@ export class Device
                 ,[ this.pins_by_num[6] ,this.pins_by_num[7] ]
                 ,[ this.pins_by_num[8] ,this.pins_by_num[9] ]
                 ,[ this.pins_by_num[10] ,this.pins_by_num[11] ]
+                ,[ this.pins_by_num[12] ,null ]
             ]
         };
     }
