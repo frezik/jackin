@@ -27,7 +27,6 @@
   },
   "homepage": "https://github.com/frezik/jackin#readme",
   "dependencies": {
-    "express": "^4.17.1"
   },
   "devDependencies": {
     "@types/node": "^13.5.0",
