@@ -1,6 +1,6 @@
 {
   "name": "jackin",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Jack in to single board computers (Raspberry Pi, Rock Pi, etc.)",
   "main": "index.ts",
   "scripts": {
