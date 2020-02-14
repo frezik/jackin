@@ -1,6 +1,11 @@
-Version 0.2
+Version 0.3
 ===========
+* Support for multiple pin headers
 * Serial
+* GPIO event-based interface
+* Documentation
+
+Version 0.4
+===========
 * Still Camera
 * Video Camera
-* GPIO event-based interface

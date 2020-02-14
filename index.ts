@@ -1,4 +1,4 @@
-export {Device} from './src/device';
+export * from './src/device';
 export * from './src/pins';
 export * from './src/subsystem';
 export * from './src/subsystem/adc';
