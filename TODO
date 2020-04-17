@@ -1,11 +1,12 @@
-Version 0.3
+Version 0.4
 ===========
+* Default exports
 * Support for multiple pin headers
 * Serial
 * GPIO event-based interface
 * Documentation
 
-Version 0.4
+Version 0.5
 ===========
 * Still Camera
 * Video Camera
