@@ -6,6 +6,8 @@ import * as Mock from './mock';
 const device = new Mock.Device();
 Tap.ok( device as Jackin.Device, "Mock device is a Device" );
 
+Tap.ok( device.maxPinNum() > 0, "Got max pin num" );
+
 const gpio_pin = device.getPin( 3 );
 Tap.ok( gpio_pin, "Fetched a pin" );
 Tap.ok( gpio_pin.hasOwnProperty( 'gpio' ), "It's a GPIO pin" );

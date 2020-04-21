@@ -356,4 +356,9 @@ export class Device
         const actual_pin = pin - 1;
         return this.pins_by_num[ actual_pin ];
     }
+
+    maxPinNum(): number
+    {
+        return this.pins_by_num.length;
+    }
 }

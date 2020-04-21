@@ -8,4 +8,6 @@ export interface Device
     getPin(
         pin: number
     ): Pins.Pin;
+
+    maxPinNum(): number;
 }
