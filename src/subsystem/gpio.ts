@@ -8,6 +8,13 @@ export enum Mode
     ,write
 }
 
+export enum PullupMode
+{
+    up
+    ,down
+    ,floating
+}
+
 
 export abstract class GPIO
     implements Subsystems.Subsystem
