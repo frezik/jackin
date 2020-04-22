@@ -1,10 +1,8 @@
 import * as Jackin from '../index';
-import * as Tap from 'tap';
-Tap.pass( "All is well" );
 
 
 export class MockGPIO
-    implements Jackin.GPIO
+    extends Jackin.GPIO
 {
     private pin: Jackin.Pin;
     private mode = Jackin.Mode.read;
@@ -15,6 +13,7 @@ export class MockGPIO
         pin: Jackin.Pin
     )
     {
+        super();
         this.pin = pin;
     }
 
@@ -47,7 +46,18 @@ export class MockGPIO
         val: boolean
     ): Promise<void>
     {
+        let existing_val = this.value;
         this.value = val;
+
+        if( (! existing_val) && val ) {
+            this.triggerOnRising( val );
+            this.triggerOnRisingOrFalling( val );
+        }
+        else if( existing_val && (! val) ) {
+            this.triggerOnFalling( val );
+            this.triggerOnRisingOrFalling( val );
+        }
+
         return new Promise( (resolve, reject) => {
             resolve();
         });

@@ -1,6 +1,6 @@
 import * as Tap from 'tap';
 import * as Jackin from '../index';
-import * as Mock from './mock';
+import * as Mock from '../test_lib/mock';
 
 
 const device = new Mock.Device();

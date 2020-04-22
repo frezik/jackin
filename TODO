@@ -1,11 +1,6 @@
-Version 0.6
-===========
-* Default exports
-* GPIO event-based interface
-* Documentation
-
 Version 0.7
 ===========
+* Docuemntation
 * Support for multiple pin headers
 * Serial
 * Still Camera
