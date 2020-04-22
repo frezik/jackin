@@ -21,6 +21,9 @@ export abstract class GPIO
 {
     abstract getPins(): Pins.Pin[];
 
+    abstract getMode(
+    ): Promise<Mode>;
+
     abstract setMode(
         mode: Mode
     ): Promise<void>;
@@ -32,8 +35,11 @@ export abstract class GPIO
     abstract getValue(
     ): Promise<boolean>;
 
+    abstract getPullup(
+    ): Promise<PullupMode>;
+
     abstract setPullup(
-        is_up: boolean
+        is_up: PullupMode
     ): Promise<void>;
 
     // TODO send event on value change (rising, falling, both)

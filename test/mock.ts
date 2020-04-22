@@ -9,7 +9,7 @@ export class MockGPIO
     private pin: Jackin.Pin;
     private mode = Jackin.Mode.read;
     private value = false;
-    private pullup = false;
+    private pullup = Jackin.PullupMode.floating;
 
     constructor(
         pin: Jackin.Pin
@@ -24,6 +24,14 @@ export class MockGPIO
         return [ this.pin ];
     }
 
+
+    getMode(
+    ): Promise<Jackin.Mode>
+    {
+        return new Promise( (resolve, reject) => {
+            resolve( this.mode );
+        });
+    }
 
     setMode(
         mode: Jackin.Mode
@@ -53,8 +61,16 @@ export class MockGPIO
         });
     }
 
+    getPullup(
+    ): Promise<Jackin.PullupMode>
+    {
+        return new Promise( (resolve, reject) => {
+            resolve( this.pullup );
+        });
+    }
+
     setPullup(
-        is_up: boolean
+        is_up: Jackin.PullupMode
     ): Promise<void>
     {
         this.pullup = is_up;
